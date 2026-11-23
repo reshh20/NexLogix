@@ -1,0 +1,25 @@
+# ── Frontend ──────────────────────────────────────────────────────────────────
+frontend/node_modules/
+frontend/dist/
+frontend/.env.local
+frontend/.env.development.local
+frontend/.env.production.local
+
+# ── Backend (C#) ──────────────────────────────────────────────────────────────
+backend/NexLogix.API/bin/
+backend/NexLogix.API/obj/
+backend/NexLogix.API/appsettings.Development.json
+
+# ── Backend (Python ML) ───────────────────────────────────────────────────────
+backend/NexLogix.ML/__pycache__/
+backend/NexLogix.ML/**/__pycache__/
+backend/NexLogix.ML/*.pyc
+backend/NexLogix.ML/app/models/*.pkl
+backend/NexLogix.ML/.env
+backend/NexLogix.ML/venv/
+backend/NexLogix.ML/.venv/
+
+# ── General ───────────────────────────────────────────────────────────────────
+.DS_Store
+*.log
+*.swp
