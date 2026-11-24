@@ -94,7 +94,7 @@ export default function ExceptionQueueView({ onTriggerToast }) {
 
   return (
     <div className="space-y-6 md:space-y-8">
-      
+
       {/* ─────────────────────────────────────────────────────────────
           1. Page Header Row
          ───────────────────────────────────────────────────────────── */}
@@ -122,7 +122,7 @@ export default function ExceptionQueueView({ onTriggerToast }) {
           2. Filter & Sort Toolbar Row
          ───────────────────────────────────────────────────────────── */}
       <div className="flex flex-wrap items-center justify-between gap-4 py-1">
-        
+
         {/* Left Filter Pills */}
         <div className="inline-flex items-center gap-2">
           {['Unresolved (24)', 'Customer Link Sent (11)', 'Escalated (3)'].map((filter) => {
@@ -132,11 +132,10 @@ export default function ExceptionQueueView({ onTriggerToast }) {
                 key={filter}
                 type="button"
                 onClick={() => setSelectedFilter(filter)}
-                className={`px-4 py-2 rounded-xl text-xs md:text-sm font-bold transition-all cursor-pointer ${
-                  isActive
-                    ? 'bg-[#FFB500] text-[#170D0A] shadow-md shadow-[#FFB500]/25'
-                    : 'bg-[#23120E] border border-[#4A281E] text-amber-100/70 hover:text-white hover:border-[#FFB500]/40'
-                }`}
+                className={`px-4 py-2 rounded-xl text-xs md:text-sm font-bold transition-all cursor-pointer ${isActive
+                  ? 'bg-[#FFB500] text-[#170D0A] shadow-md shadow-[#FFB500]/25'
+                  : 'bg-[#23120E] border border-[#4A281E] text-amber-100/70 hover:text-white hover:border-[#FFB500]/40'
+                  }`}
               >
                 {filter}
               </button>
@@ -155,10 +154,10 @@ export default function ExceptionQueueView({ onTriggerToast }) {
           3. Main 2-Column Split Layout (~65% Left Master / ~35% Right Detail)
          ───────────────────────────────────────────────────────────── */}
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
-        
+
         {/* ── Left Column: Flagged Shipments List (65% / 8 cols) ── */}
         <div className="lg:col-span-7 xl:col-span-8 rounded-2xl border border-[#4A281E] bg-[#23120E] shadow-2xl overflow-hidden flex flex-col justify-between">
-          
+
           <div className="p-6">
             {/* Card Header */}
             <div className="flex items-center justify-between pb-4 border-b border-[#4A281E]/60">
@@ -189,11 +188,10 @@ export default function ExceptionQueueView({ onTriggerToast }) {
                   <div
                     key={item.id}
                     onClick={() => setSelectedExceptionId(item.id)}
-                    className={`rounded-2xl border p-5 transition-all duration-200 cursor-pointer ${
-                      isSelected
-                        ? 'bg-[#2B1611] border-[#FFB500] shadow-lg shadow-[#FFB500]/10 ring-1 ring-[#FFB500]/50'
-                        : 'bg-[#1C0D0A]/70 border-[#4A281E] hover:border-[#FFB500]/40 hover:bg-[#25130F]'
-                    }`}
+                    className={`rounded-2xl border p-5 transition-all duration-200 cursor-pointer ${isSelected
+                      ? 'bg-[#2B1611] border-[#FFB500] shadow-lg shadow-[#FFB500]/10 ring-1 ring-[#FFB500]/50'
+                      : 'bg-[#1C0D0A]/70 border-[#4A281E] hover:border-[#FFB500]/40 hover:bg-[#25130F]'
+                      }`}
                   >
                     {/* Top Row: ID, Tag, Countdown, Review Button */}
                     <div className="flex flex-wrap items-center justify-between gap-3">
@@ -222,11 +220,10 @@ export default function ExceptionQueueView({ onTriggerToast }) {
                             e.stopPropagation();
                             setSelectedExceptionId(item.id);
                           }}
-                          className={`px-3.5 py-1.5 rounded-lg text-xs font-bold transition ${
-                            isSelected
-                              ? 'bg-[#FFB500] text-[#170D0A] shadow-md shadow-[#FFB500]/20'
-                              : 'border border-[#4A281E] bg-[#23120E] text-amber-200/80 hover:text-white hover:border-[#FFB500]/40'
-                          }`}
+                          className={`px-3.5 py-1.5 rounded-lg text-xs font-bold transition ${isSelected
+                            ? 'bg-[#FFB500] text-[#170D0A] shadow-md shadow-[#FFB500]/20'
+                            : 'border border-[#4A281E] bg-[#23120E] text-amber-200/80 hover:text-white hover:border-[#FFB500]/40'
+                            }`}
                         >
                           Review
                         </button>
@@ -274,7 +271,7 @@ export default function ExceptionQueueView({ onTriggerToast }) {
 
         {/* ── Right Column: Quick-Action Resolution Panel (35% / 4-5 cols) ── */}
         <div className="lg:col-span-5 xl:col-span-4 rounded-2xl border border-[#4A281E] bg-[#23120E] shadow-2xl p-6 space-y-5 sticky top-6">
-          
+
           {/* Panel Header */}
           <div>
             <div className="flex items-center justify-between">

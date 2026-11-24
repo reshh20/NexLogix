@@ -14,7 +14,7 @@ public class ShipmentService : IShipmentService
         _db = db;
     }
 
-    public async Task<IEnumerable<ShipmentDto>> GetShipmentsAsync(int page, int pageSize, string? status)
+    public async Task<IEnumerable<ShipmentDto>> GetShipmentsAsync(int page, int pageSize, string? status, string? hub = null)
     {
         var query = _db.Shipments
             .Include(s => s.Customer)
@@ -23,8 +23,12 @@ public class ShipmentService : IShipmentService
         if (!string.IsNullOrWhiteSpace(status))
             query = query.Where(s => s.Status == status);
 
+        if (!string.IsNullOrWhiteSpace(hub))
+            query = query.Where(s => s.OriginAddress != null && s.OriginAddress.Contains(hub));
+
         return await query
-            .OrderByDescending(s => s.CreatedAt)
+            .OrderByDescending(s => s.RiskScore)
+            .ThenByDescending(s => s.CreatedAt)
             .Skip((page - 1) * pageSize)
             .Take(pageSize)
             .Select(s => ToDto(s))

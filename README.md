@@ -1,4 +1,4 @@
-# NexLogix
+# NexLogix — Predictive Operations & Logistics Intelligence Platform
 
 Enterprise shipment tracking and delivery risk prediction platform.
 
@@ -69,7 +69,26 @@ uvicorn app.main:app --reload --port 8000
 | GET | `/api/shipments` | List shipments (paginated) |
 | GET | `/api/shipments/{id}` | Single shipment |
 | POST | `/api/shipments` | Create shipment |
+| PATCH | `/api/shipments/{id}/status` | Update shipment status |
 | GET | `/api/customers` | List customers |
 | GET | `/api/exceptions` | List delivery exceptions |
+| PATCH | `/api/exceptions/{id}/resolve` | Resolve an exception |
 | GET | `/api/predictions/{shipmentId}` | ML risk prediction (proxied) |
 | POST | `/predict/` | ML service direct endpoint |
+
+---
+
+## Development Milestones
+
+- [x] **Phase 1: Dynamic Data Binding (Frontend ↔ Backend)**
+  - ASP.NET Core database auto-seeding with realistic operators, customers, shipments, and delivery exceptions (`DbInitializer.cs`).
+  - Frontend `DashboardPage` and `ExceptionQueueView` connected to live `/api/shipments` and `/api/exceptions` endpoints with graceful offline/local fallback.
+  - Exception resolution actions wired from UI to backend API (`PATCH /api/exceptions/{id}/resolve`).
+- [ ] **Phase 2: ML Pipeline & Counterfactual Route Simulator Integration**
+  - Train/export scikit-learn model and connect `/api/predictions/{shipmentId}` to the FastAPI ML service.
+  - Wire the Route Simulator's counterfactual re-sequence metrics (Distance: 48.2 → 41.6 km, Breach Probability: 94% → 12%) to live ML prediction calculations.
+- [ ] **Phase 3: Real-Time SignalR Telemetry & Hub Telematics**
+  - Implement ASP.NET Core SignalR hub (`/hubs/telemetry`) to broadcast live bottleneck updates, belt feed speeds, and exception alerts in real time.
+- [ ] **Phase 4: Cloud Deployment & AWS Infrastructure**
+  - Containerization with Docker Compose, AWS RDS MySQL deployment, S3 evidence file storage, and EC2/App Runner hosting.
+

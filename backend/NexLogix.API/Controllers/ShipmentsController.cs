@@ -23,10 +23,11 @@ public class ShipmentsController : ControllerBase
     [ProducesResponseType(typeof(IEnumerable<ShipmentDto>), 200)]
     public async Task<IActionResult> GetAll(
         [FromQuery] int    page     = 1,
-        [FromQuery] int    pageSize = 20,
-        [FromQuery] string? status  = null)
+        [FromQuery] int    pageSize = 50,
+        [FromQuery] string? status  = null,
+        [FromQuery] string? hub     = null)
     {
-        var shipments = await _shipmentService.GetShipmentsAsync(page, pageSize, status);
+        var shipments = await _shipmentService.GetShipmentsAsync(page, pageSize, status, hub);
         return Ok(shipments);
     }
 
